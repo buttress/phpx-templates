@@ -1,0 +1,39 @@
+{
+    "name": "buttress/phpx-templates",
+    "description": "PHPX Template engine",
+    "type": "library",
+    "require": {
+        "php": ">=8.2",
+        "buttress/phpx": "^0.1.0",
+        "buttress/phpx-compile": "^0.1.0",
+        "symfony/finder": "^7.0",
+        "ext-dom": "*"
+    },
+    "require-dev": {
+        "psr/cache": "^3.0",
+        "psr/simple-cache": "^3.0",
+        "pestphp/pest": "^2.34",
+        "mockery/mockery": "^1.6"
+    },
+    "suggest": {
+        "psr/cache": "To use the Psr6TemplateRenderer",
+        "psr/simple-cache": "To use the Psr16TemplateRenderer"
+    },
+    "autoload": {
+        "psr-4": {
+            "Buttress\\PhpxTemplates\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Korvin Szanto",
+            "email": "me@kor.vin"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
