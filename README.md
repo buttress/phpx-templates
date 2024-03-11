@@ -9,20 +9,22 @@
 ```php
 <?php
 assert($options instanceof \Buttress\PhpxTemplates\ThemeOptions);
+$x = $options->x;
 
 return $x->html(c: [
     $x->head(c: [
-        $x->title(c: $x->block('head-title', 'My default site title')),
-        $x->raw($x->block('head-extra')),
+        $x->title(c: $options->block('head-title', 'My default site title')),
+        $x->raw($options->block('head-extra')),
     ]),
     $x->body(c: [
-        $x->header(c: $x->h1($x->block('title', 'My Site')),
+        $x->header(c: $x->h1($options->block('title', 'My Site')),
         $x->main(c: [
-            $x->raw($x->block('content', fn() => $x->div('No content provided.')))
+            $x->raw($options->block('content', fn() => $x->div('No content provided.')))
         ])
     ])
 ]);
 ```
+
 ### Page
 ```php
 <?php
