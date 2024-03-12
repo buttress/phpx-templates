@@ -13,7 +13,8 @@
         "psr/cache": "^3.0",
         "psr/simple-cache": "^3.0",
         "pestphp/pest": "^2.34",
-        "mockery/mockery": "^1.6"
+        "mockery/mockery": "^1.6",
+        "laravel/pint": "^1.14"
     },
     "suggest": {
         "psr/cache": "To use the Psr6TemplateRenderer",
