@@ -17,4 +17,10 @@ jobs:
           php-version: '8.3'
       - run: composer install
       - run: ./vendor/bin/pint --preset per --test
-      - run: XDEBUG_MODE=coverage ./vendor/bin/pest --coverage
+      - run: XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --coverage-cover 'clover.xml'
+      - name: Track coverage
+        if: ! contains(github.event.pull_request.user.login, 'dependabot[bot]')
+        uses: slavcodev/coverage-monitor-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_path: "clover.xml"
