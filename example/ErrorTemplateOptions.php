@@ -1,6 +1,6 @@
 <?php
 
-use Buttress\PhpxTemplates\TemplateOptions;
+use Phpx\Templates\TemplateOptions;
 
 readonly class ErrorTemplateOptions extends TemplateOptions
 {
@@ -8,7 +8,7 @@ readonly class ErrorTemplateOptions extends TemplateOptions
         public string $message,
         public \Throwable $exception,
         public int $code,
-        \Buttress\PHPX $x,
+        \Buttress\Phpx\Phpx $x,
     ) {
         parent::__construct($x);
     }

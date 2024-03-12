@@ -1,11 +1,11 @@
 <?php
 
-namespace Buttress\PhpxTemplates\Renderer;
+namespace Phpx\Templates\Renderer;
 
-use Buttress\PhpxTemplates\Exception\TemplateMissingException;
-use Buttress\PhpxTemplates\Exception\TemplateRenderException;
-use Buttress\PhpxTemplates\TemplateOptions;
-use Buttress\PhpxTemplates\TemplateRendererInterface;
+use Phpx\Templates\Exception\TemplateMissingException;
+use Phpx\Templates\Exception\TemplateRenderException;
+use Phpx\Templates\TemplateOptions;
+use Phpx\Templates\TemplateRendererInterface;
 
 class SimpleTemplateRenderer implements TemplateRendererInterface
 {

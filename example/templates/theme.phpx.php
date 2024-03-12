@@ -3,8 +3,8 @@
 $options ??= null;
 $xt ??= null;
 
-assert($options instanceof \Buttress\PhpxTemplates\ThemeOptions);
-assert($xt instanceof Buttress\PhpxTemplates\TemplateRendererInterface);
+assert($options instanceof \Phpx\Templates\ThemeOptions);
+assert($xt instanceof Phpx\Templates\TemplateRendererInterface);
 
 $x = $options->x;
 return $x->html(c: [

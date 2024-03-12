@@ -1,6 +1,6 @@
 <?php
 
-namespace Buttress\PhpxTemplates;
+namespace Phpx\Templates;
 
 /**
  * @template T of TemplateOptions

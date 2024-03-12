@@ -1,8 +1,8 @@
 <?php
 
-use Buttress\Compiler;
-use Buttress\PhpxTemplates\Renderer\LazyCompiledTemplateRenderer;
-use Buttress\PhpxTemplates\TemplateOptions;
+use Phpx\Compile\Compiler;
+use Phpx\Templates\Renderer\LazyCompiledTemplateRenderer;
+use Phpx\Templates\TemplateOptions;
 use PhpParser\ParserFactory;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -19,7 +19,7 @@ $templateRenderer = new LazyCompiledTemplateRenderer(
     5,
 );
 
-$xkcd = function (\Buttress\PhpxTemplates\TemplateRendererInterface $renderer, \Buttress\PHPX $x, ?string $id) {
+$xkcd = function (\Phpx\Templates\TemplateRendererInterface $renderer, \Buttress\Phpx\Phpx $x, ?string $id) {
     $itemId = (int) $id;
 
     $response = null;
@@ -56,14 +56,14 @@ $xkcd = function (\Buttress\PhpxTemplates\TemplateRendererInterface $renderer, \
 $requestPath = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
-$phpx = new \Buttress\PHPX();
+$phpx = new \Buttress\Phpx\Phpx();
 try {
     $result = match (true) {
         $requestPath === '' || $requestPath === '/' => $templateRenderer->render('pages/home', new TemplateOptions($phpx)),
         preg_match('~^/xkcd/?(\d+)?/?~', $requestPath, $matches) !== false => $xkcd($templateRenderer, $phpx, $matches[1] ?? null),
         default => $templateRenderer->render('errors/404', new TemplateOptions($phpx)),
     };
-} catch (\Buttress\PhpxTemplates\Exception\Exception $e) {
+} catch (\Phpx\Templates\Exception\Exception $e) {
     $result = $templateRenderer->render('errors/error', new ErrorTemplateOptions($e->getMessage(), $e, 500, $phpx));
 } catch (\Throwable $e) {
     $result = $templateRenderer->render('errors/error', new ErrorTemplateOptions('Unknown error.', $e, 500, $phpx));

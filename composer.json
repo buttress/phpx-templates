@@ -4,10 +4,10 @@
     "type": "library",
     "require": {
         "php": ">=8.2",
-        "buttress/phpx": "^0.1.0",
-        "buttress/phpx-compile": "^0.1.0",
-        "symfony/finder": "^7.0",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "buttress/phpx": "^0.2",
+        "buttress/phpx-compile": "^0.2",
+        "symfony/finder": "^7.0"
     },
     "require-dev": {
         "psr/cache": "^3.0",
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Buttress\\PhpxTemplates\\": "src/"
+            "Phpx\\Templates\\": "src/"
         }
     },
     "authors": [
@@ -35,5 +35,14 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "lint": "pint --preset per",
+        "test:unit": "pest",
+        "test:lint": "@lint --test",
+        "test": [
+            "@test:unit",
+            "@test:lint"
+        ]
     }
 }

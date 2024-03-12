@@ -1,8 +1,8 @@
 <?php
 
-namespace Buttress\PhpxTemplates;
+namespace Phpx\Templates;
 
-use Buttress\PHPX;
+use Buttress\Phpx\Phpx;
 
 readonly class TemplateOptions
 {

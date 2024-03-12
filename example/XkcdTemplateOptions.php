@@ -1,6 +1,6 @@
 <?php
 
-use Buttress\PhpxTemplates\TemplateOptions;
+use Phpx\Templates\TemplateOptions;
 
 readonly class XkcdTemplateOptions extends TemplateOptions
 {
@@ -11,7 +11,7 @@ readonly class XkcdTemplateOptions extends TemplateOptions
         public string $img,
         public string $title,
         public string $safeTitle,
-        \Buttress\PHPX $x,
+        \Buttress\Phpx\Phpx $x,
     ) {
         parent::__construct($x);
     }

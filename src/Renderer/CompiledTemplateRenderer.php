@@ -1,12 +1,13 @@
 <?php
 
-namespace Buttress\PhpxTemplates\Renderer;
+namespace Phpx\Templates\Renderer;
 
-use Buttress\PhpxTemplates\Exception\TemplateMissingException;
-use Buttress\PhpxTemplates\Exception\TemplateRenderException;
-use Buttress\PhpxTemplates\TemplateOptions;
-use Buttress\PhpxTemplates\TemplateRendererInterface;
-use Buttress\PhpxTemplates\ThemeOptions;
+use Phpx\Templates\ThemedResult;
+use Phpx\Templates\Exception\TemplateMissingException;
+use Phpx\Templates\Exception\TemplateRenderException;
+use Phpx\Templates\TemplateOptions;
+use Phpx\Templates\TemplateRendererInterface;
+use Phpx\Templates\ThemeOptions;
 use Psr\SimpleCache\CacheInterface;
 
 class CompiledTemplateRenderer implements TemplateRendererInterface
@@ -31,7 +32,7 @@ class CompiledTemplateRenderer implements TemplateRendererInterface
             string $__compiled_template,
             TemplateOptions $options,
             TemplateRendererInterface $xt,
-        ): string|iterable {
+        ): string|ThemedResult {
             try {
                 return eval($__compiled_template);
             } catch (\Throwable $e) {
@@ -42,19 +43,14 @@ class CompiledTemplateRenderer implements TemplateRendererInterface
         return $this->assemble($renderContext($key, $compiled, $options, $this), $options);
     }
 
-    protected function assemble(string|iterable $result, TemplateOptions $options): string
+    protected function assemble(string|ThemedResult $result, TemplateOptions $options): string
     {
         if (is_string($result)) {
             return $result;
         }
 
-        if ($result instanceof \Iterator) {
-            $result = iterator_to_array($result);
-        }
-
-        $theme = $result['theme'] ?? null;
-        if ($theme) {
-            return $this->render($theme, new ThemeOptions($result, $options));
+        if ($result->theme) {
+            return $this->render($result->theme, new ThemeOptions($result->blocks, $options));
         }
 
         return implode('', $result);

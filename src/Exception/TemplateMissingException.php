@@ -1,8 +1,8 @@
 <?php
 
-namespace Buttress\PhpxTemplates\Exception;
+namespace Phpx\Templates\Exception;
 
-use Buttress\PhpxTemplates\TemplateOptions;
+use Phpx\Templates\TemplateOptions;
 use Throwable;
 
 class TemplateMissingException extends \InvalidArgumentException implements Exception

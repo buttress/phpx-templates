@@ -1,10 +1,10 @@
 <?php
 
-namespace Buttress\PhpxTemplates\Renderer;
+namespace Phpx\Templates\Renderer;
 
-use Buttress\Compiler;
-use Buttress\PhpxTemplates\Exception\TemplateMissingException;
-use Buttress\PhpxTemplates\TemplateOptions;
+use Phpx\Compile\Compiler;
+use Phpx\Templates\Exception\TemplateMissingException;
+use Phpx\Templates\TemplateOptions;
 use Psr\SimpleCache\CacheInterface;
 
 class LazyCompiledTemplateRenderer extends CompiledTemplateRenderer

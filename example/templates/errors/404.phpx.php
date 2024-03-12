@@ -3,13 +3,12 @@
 $options ??= null;
 $xt ??= null;
 
-assert($options instanceof \Buttress\PhpxTemplates\TemplateOptions);
-assert($xt instanceof Buttress\PhpxTemplates\TemplateRendererInterface);
+assert($options instanceof \Phpx\Templates\TemplateOptions);
+assert($xt instanceof Phpx\Templates\TemplateRendererInterface);
 
 $x = $options->x;
-return [
-    'theme' => 'theme',
-    'content' => $x->div(class: 'container mx-auto', c: [
+return \Phpx\Templates\ThemedResult::create('theme')
+    ->withBlock('content', $x->div(class: 'container mx-auto', c: [
         $x->div(class: 'flex h-full w-full items-center text-center justify-center', c: [
             $x->div(class: 'h-16', c: [
                 $x->div(class: 'outline-gray-200 outline', c: [
@@ -21,5 +20,4 @@ return [
                 ]),
             ]),
         ]),
-    ])
-];
+    ]));

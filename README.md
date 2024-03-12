@@ -1,6 +1,6 @@
 <p align="center">
     <code lang="html">&lt;PHPX templates /&gt;</code><br><br>
-    PHPX Templates is a template engine built around <a href="/buttress/phpx">PHPX</a> and <a href="/buttress/phpx-compile">PHPX Compile</a> 
+    PHPX Templates is a template engine built around <a href="https://github.com/buttress/phpx">PHPX</a> and <a href="https://github.com/buttress/phpx-compile">PHPX Compile</a> 
 </p>
 
 ---
@@ -26,17 +26,16 @@ return $x->html(c: [
 ```
 
 ### Page
+
 ```php
 <?php
 // Change this to match what your template expects
 assert($options instanceof \Buttress\PhpxTemplates\TemplateOptions);
 $x = $options->x;
 
-return [
-    'theme' => 'my/theme',
-    'title' => 'My custom page title',
-    'content' => $x->div('Here\'s the content'),
-];
+return \Phpx\Templates\ThemedResult::create('my/theme')
+    ->withBlock('title', 'My custom page title')
+    ->withBlock('content', $x->div('Here\'s the content'));
 ```
 
 ## Installation

@@ -1,5 +1,5 @@
 <?php
 
-namespace Buttress\PhpxTemplates\Exception;
+namespace Phpx\Templates\Exception;
 
 class ThemeMissingException extends \RuntimeException implements Exception {}
